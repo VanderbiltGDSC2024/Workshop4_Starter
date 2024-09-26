@@ -1,0 +1,17 @@
+.socials-div {
+  margin: 2em auto;
+  text-align: center;
+  color: rgb(17, 31, 66);
+}
+
+.connect {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em; /* This adds space between the icons */
+  margin-top: 1em;
+}
+
+.media {
+  display: inline-block;
+}

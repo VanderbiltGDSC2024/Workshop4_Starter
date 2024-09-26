@@ -1,0 +1,68 @@
+/* ProjectCard.css */
+
+/* Ensure all project cards have the same height */
+.project-card {
+  height: 60vh; /* Adjust the height as needed */
+  width: 50vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.mdc-card__primary-action {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Image wrapper to control the aspect ratio */
+.project-card__image-wrapper {
+  flex-shrink: 0;
+  overflow: hidden;
+  /* height: 200px; Set the desired image height */
+  width: 100%;
+}
+
+/* Style the image to fit within the wrapper */
+.project-card__image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover; /* Ensures the image covers the container while maintaining aspect ratio */
+}
+
+/* Description area */
+.project-card__description {
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+/* Adjust the actions area */
+.mdc-card__actions {
+  display: flex;
+  align-items: center;
+}
+
+/* Align the 'View Code' button to the right */
+.right-justify {
+  margin-left: auto;
+}
+
+/* Ensure the buttons take minimal space */
+.mdc-button {
+  min-width: 0;
+}
+
+/* Optional: Limit the text to prevent overflow */
+.project-card__description {
+  margin-top: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list-container {
+  margin-top: -25px;
+  margin-bottom: 10px;
+  color: rgb(17, 31, 66);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
