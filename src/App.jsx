@@ -18,10 +18,8 @@ function App() {
       <div id="portfolio">
         <ProjectList />
       </div>
-      <div>
+      <div id="testimonies">
         <TestimonialList />
-      </div>
-      <div>
         <AddTestimony />
       </div>
       <div id="social">
