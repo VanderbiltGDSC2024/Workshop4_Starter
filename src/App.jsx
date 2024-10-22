@@ -5,6 +5,8 @@ import { Navbar } from "./components/Navbar";
 import { Landing } from "./components/Landing";
 import { ProjectList } from "./components/ProjectList";
 import { Socials } from "./components/Socials";
+import { TestimonialList } from "./components/TestimonialList";
+import { AddTestimony } from "./components/AddTestimony";
 
 function App() {
   return (
@@ -15,6 +17,12 @@ function App() {
       <Navbar />
       <div id="portfolio">
         <ProjectList />
+      </div>
+      <div>
+        <TestimonialList />
+      </div>
+      <div>
+        <AddTestimony />
       </div>
       <div id="social">
         <Socials />
