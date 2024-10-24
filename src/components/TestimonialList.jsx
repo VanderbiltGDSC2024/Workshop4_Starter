@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { db } from "../backend/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { TestimonialCard } from "./TestimonialCard";
 import "./TestimonialList.css"
 
@@ -16,7 +16,7 @@ export const TestimonialList = () => {
             const data = doc.data()
 
             if (data.time && data.time.toDate) {
-                data.time = data.time.toDate(); // Converts Firestore Timestamp to Date
+                data.time = data.time.toDate();
             }
 
             fetchedTestimonials.push({ id: doc.id, ...data });
@@ -29,6 +29,16 @@ export const TestimonialList = () => {
         fetchTestimonials();
     }, []);
 
+    const handleDelete = async (id) => {
+        try {
+            await deleteDoc(doc(db, "testimonies", id));
+
+            setTestimonials(testimonials.filter((testimonial) => testimonial.id !== id));
+        } catch (error) {
+            console.error("Error deleting testimonial:", error);
+        }
+    };
+
     if (loading) {
         return <div>Loading...</div>; // Or return null if you don't want any content
     }
@@ -39,7 +49,7 @@ export const TestimonialList = () => {
 
             <div className="testimonial-grid">
                 {testimonials.map((testimonial, index) => (
-                    <TestimonialCard key={index} testimonial={testimonial} />
+                    <TestimonialCard key={index} testimonial={testimonial} onDelete={() => handleDelete(testimonial.id)} />
                 ))}
             </div>
         </div>

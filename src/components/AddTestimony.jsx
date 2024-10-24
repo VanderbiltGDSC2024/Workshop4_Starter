@@ -6,14 +6,17 @@ import {
   TextField,
   Button,
   Box,
-  Typography,
   Paper,
   Grid,
   Alert,
 } from "@mui/material";
+import GoogleButton from "react-google-button";
+
+import { signIn } from "../backend/firebase";
 
 export const AddTestimony = () => {
   const [name, setName] = useState("");
+  const [photoURL, setPhotoURL] = useState("");
   const [message, setMessage] = useState("");
   const [relation, setRelation] = useState("");
   const [error, setError] = useState(null);
@@ -30,8 +33,13 @@ export const AddTestimony = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    let imgUrl = photoURL;
 
-    const imgUrl = generateRandom();
+    if (!photoURL) {
+      imgUrl = generateRandom();
+    }
+
+  console.log("Image URL being used:", imgUrl);
 
     try {
       // Add a new document to the "testimonies" collection
@@ -50,8 +58,7 @@ export const AddTestimony = () => {
       setSuccess(true); // Show success message
       setError(null); // Clear any previous errors
 
-      // Optionally, refresh the page
-      // window.location.reload();
+      window.location.reload();
     } catch (error) {
       console.error("Error adding document: ", error);
       setError("Failed to add testimonial. Please try again.");
@@ -138,6 +145,18 @@ export const AddTestimony = () => {
           </Grid>
         </Grid>
       </form>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          marginTop: 2, // Optional: Adds some space between the form and the Google button
+        }}
+      >
+        <GoogleButton onClick={() => signIn(setName, setPhotoURL)} />
+      </Box>
+
     </Box>
+
+    
   );
 };
