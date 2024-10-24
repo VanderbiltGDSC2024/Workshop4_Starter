@@ -20,7 +20,6 @@ function App() {
       </div>
       <div id="testimonies">
         <TestimonialList />
-        <AddTestimony />
       </div>
       <div id="social">
         <Socials />

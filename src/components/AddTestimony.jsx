@@ -1,7 +1,7 @@
 // AddTestimony.jsx
 import React, { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
-import { db } from "../backend/firebase";
+
 import {
   TextField,
   Button,
@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import GoogleButton from "react-google-button";
 
-import { signIn } from "../backend/firebase";
+
 
 export const AddTestimony = () => {
   const [name, setName] = useState("");
@@ -22,7 +22,6 @@ export const AddTestimony = () => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
 
-  // Function to generate a random image URL
   const generateRandom = () => {
     const randomNumber = Math.floor(Math.random() * 40) + 1;
     const genderArray = ["men", "women"];
@@ -43,20 +42,16 @@ export const AddTestimony = () => {
 
     try {
       // Add a new document to the "testimonies" collection
-      await addDoc(collection(db, "testimonies"), {
-        name,
-        message,
-        relation,
-        time: new Date(), // Adds the current timestamp
-        img: imgUrl,
-      });
+
+
+
 
       console.log("Document successfully written!");
-      setName(""); // Clear the form after submission
+      setName(""); 
       setMessage("");
       setRelation("");
-      setSuccess(true); // Show success message
-      setError(null); // Clear any previous errors
+      setSuccess(true); 
+      setError(null); 
 
       window.location.reload();
     } catch (error) {

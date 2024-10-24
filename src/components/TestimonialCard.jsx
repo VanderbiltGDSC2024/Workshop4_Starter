@@ -8,7 +8,7 @@ export const TestimonialCard = ({ testimonial, onDelete }) => {
         {/* Profile Image */}
         <img src={testimonial.img} className="testimonial-card__image" alt={testimonial.name} />
         <div className="testimonial-actions">
-        <span className="testimonial-x" onClick={onDelete}>X</span>
+        {/* <span className="testimonial-x" onClick={onDelete}>X</span> */}
         <span className="testimonial-date">
           {testimonial.time
             ? testimonial.time.toLocaleDateString("en-US", {
